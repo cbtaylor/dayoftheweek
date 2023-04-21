@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Day Of The Week Game</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+      body {
+        background-color: #f5f5f5;
+        font-family: 'Montserrat', sans-serif;
+      }
+      .container {
+          max-width: 600px;
+          margin: 0 auto;
+          text-align: center;
+      }
+
+      h2 {
+        color: #555555;
+        margin-top: 50px;
+      }
+
+      button {
+        border-radius: 5px;
+        border: none;
+        color: white;
+        padding: 8px 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+        margin-top: 18px;
+        cursor: pointer;
+      }
+      
+      .buttonDay {
+          width: 12%;
+          background-color: #39ac73;
+      }
+      
+      .buttonDay:hover {
+          background-color: #2d8659;
+      }
+      
+      .buttonAnother {
+          width: 30%;
+          background-color: #ff6600;
+      }
+
+      .buttonAnother:hover {
+        background-color: #cc5200;
+      }
+
+      #generated-date {
+        font-size: 24px;
+        font-weight: bold;
+        color: #555555;
+      }
+
+      #day-of-week {
+        font-size: 32px;
+        font-weight: bold;
+        color: #004d1a;
+        margin-top: 30px;
+        height: 50px;
+      }
+      
+      #correct {
+        font-size: 24px;
+      }
+      
+      #correct-label {
+        font-size: 24px;
+      }
+      
+      #incorrect {
+        font-size: 24px;
+      }
+      
+      #incorrect-label {
+        font-size: 24px;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <div class="container">
+    <h2>Do You Know The Day Of The Week?</h2>
+    <p>
+      <span id="generated-date"></span>
+    </p>
+    
+    <div id="day-of-week"></div>
+    
+    <button class="button buttonDay" onclick="checkDay(0)">Su</button>
+    <button class="button buttonDay" onclick="checkDay(1)">Mo</button>
+    <button class="button buttonDay" onclick="checkDay(2)">Tu</button>
+    <button class="button buttonDay" onclick="checkDay(3)">We</button>
+    <button class="button buttonDay" onclick="checkDay(4)">Th</button>
+    <button class="button buttonDay" onclick="checkDay(5)">Fr</button>
+    <button class="button buttonDay" onclick="checkDay(6)">Sa</button>
+    
+    
+    <p><button class="button buttonAnother" onclick="reloadDate()">Another</button></p>
+    <p><span id="correct-label">Correct: </span> <span id="correct">0</span></p>
+	<p><span id="incorrect-label">Incorrect: </span> <span id="incorrect">0</span></p>
+    </div>
+    <script>
+      let check, year, month, day, date, daysOfWeek, dayOfWeek, generatedDateElement, dayOfWeekElement;
+      
+      function generateRandomDate() {
+        check = 0;
+        year = Math.floor(Math.random() * (2199 - 1753 + 1) + 1753);
+        month = Math.floor(Math.random() * 12) + 1;
+        day = Math.floor(Math.random() * 31) + 1;
+        date = new Date(year, month, day);
+        daysOfWeek = [
+          'Sunday',
+          'Monday',
+          'Tuesday',
+          'Wednesday',
+          'Thursday',
+          'Friday',
+          'Saturday',
+        ];
+        dayOfWeek = daysOfWeek[date.getDay()];
+        generatedDateElement = document.getElementById('generated-date');
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        generatedDateElement.textContent = date.toLocaleDateString(
+          undefined,
+          options
+        );
+        dayOfWeekElement = document.getElementById('day-of-week');
+        dayOfWeekElement.textContent = '';
+      }
+
+      function displayDayOfWeek() {
+        dayOfWeekElement.textContent = dayOfWeek;
+      }
+      
+      function checkDay(day) {
+          displayDayOfWeek();
+          if (date.getDay() == day) {
+              incrementCorrect();
+          } else {
+              incrementIncorrect();
+          }
+          check = 1;
+      }
+      
+	  function incrementCorrect() {
+          if (check == 0) {
+              correct++;
+              correctDisplay.textContent = correct;
+              check = 1;
+            }
+		}
+		
+	  function incrementIncorrect() {
+            if (check == 0) {
+                incorrect++;
+                incorrectDisplay.textContent = incorrect;
+                check = 1;
+            }
+		}
+      
+      function reloadDate() {
+        generateRandomDate();
+      }
+
+      generateRandomDate();
+      let correct = 0;
+	  let incorrect = 0;
+      const correctDisplay = document.getElementById("correct");
+      const incorrectDisplay = document.getElementById("incorrect");
+    </script>
+  </body>
+</html>
