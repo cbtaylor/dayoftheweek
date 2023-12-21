@@ -54,6 +54,12 @@ button {
   background-color: #cc5200;
 }
 
+a:link {
+  color: #8000ff;
+  text-decoration: none;
+  font-size: 20px;
+}
+
 #generated-date {
   font-size: 24px;
   font-weight: bold;
