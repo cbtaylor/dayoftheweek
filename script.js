@@ -32,6 +32,7 @@ function displayDayOfWeek() {
 }
 
 function checkDay(day) {
+      generatedDateElement.style.display = "initial";
       displayDayOfWeek();
       if (date.getDay() == day) {
           incrementCorrect();
