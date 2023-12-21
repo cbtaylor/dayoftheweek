@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Day Of The Week Game</title>
     <link rel="icon" type="image/x-icon" href="/images/dotw.ico" />
-    
+
   </head>
   <body>
     <div class="container">
@@ -14,9 +14,9 @@
     <p>
       <span id="generated-date"></span>
     </p>
-    
+
     <div id="day-of-week"></div>
-    
+
     <button class="button buttonDay" onclick="checkDay(0)">Su</button>
     <button class="button buttonDay" onclick="checkDay(1)">Mo</button>
     <button class="button buttonDay" onclick="checkDay(2)">Tu</button>
@@ -24,11 +24,14 @@
     <button class="button buttonDay" onclick="checkDay(4)">Th</button>
     <button class="button buttonDay" onclick="checkDay(5)">Fr</button>
     <button class="button buttonDay" onclick="checkDay(6)">Sa</button>
-    
-    
-    <p><button class="button buttonAnother" onclick="reloadDate()">Another</button></p>
+
+    <p>
+      <button class="button buttonShow" onclick="reloadDate()">Show Another</button>
+      <button class="button buttonSay" onClick="sayAnother()">Say Another</button>
+    </p>
+      
     <p><span id="correct-label">Correct: </span> <span id="correct">0</span></p>
-	<p><span id="incorrect-label">Incorrect: </span> <span id="incorrect">0</span></p>
+  <p><span id="incorrect-label">Incorrect: </span> <span id="incorrect">0</span></p>
     </div>
 
     <script src="script.js"></script>
